@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 @ownerOnly
 public class exit extends CommandBase {
-    public String[] commandName;
+    public ArrayList<String> commandName;
 
     public exit(ArrayList<String> commandName) {
         super(commandName);
@@ -16,7 +16,8 @@ public class exit extends CommandBase {
 
     @Override
     public void run(ShardManager bot, MessageReceivedEvent ctx, ArrayList<String> args) {
-
+        System.out.println("exiting by command from: " + ctx.getAuthor().getName());
+        System.exit(0);
     }
 
 

@@ -14,14 +14,12 @@ import java.util.Arrays;
 
 public class CommandHandler extends ListenerAdapter {
     public static CommandList commands = new CommandList();
-    public static <T extends CommandBase> void clearCooldown(String userID,T command){
-        if(command.commandCooldown.containsKey(userID)){
-            command.commandCooldown.remove(userID);
-        }
+    public static <T extends CommandBase> void clearCooldown(String userID, @NotNull T command){
+        command.commandCooldown.remove(userID);
     }
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        if(!event.getMessage().getContentRaw().startsWith(discordBot.Prefix)) return;
+        if(!event.getMessage().getContentRaw().startsWith(discordBot.config.prefix)) return;
         //strip the prefix and convert to array of args
         ArrayList<String> command = new ArrayList<>(Arrays.asList(event.getMessage().getContentRaw().replaceFirst("^`", "").split(" ") ));
         for (CommandBase commandToRun:
