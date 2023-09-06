@@ -8,8 +8,8 @@ public class CommandList {
 
     public CommandList() {
         // TODO: make this a hash map with entries for each
-        commands.add(new exit(new ArrayList<String>(Arrays.asList("quit", "exit"))));
-        commands.add(new hello(new ArrayList<String>(Arrays.asList("hello", "hi"))));
-        commands.add(new test(new ArrayList<String>(Arrays.asList("test"))));
+        commands.add(new exit(new ArrayList<>(Arrays.asList("quit", "exit"))));
+        commands.add(new hello(new ArrayList<>(Arrays.asList("hello", "hi"))));
+        commands.add(new test(new ArrayList<>(Arrays.asList("test"))));
     }
 }

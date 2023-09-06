@@ -11,7 +11,7 @@ public class hello extends CommandBase {
     }
 
     @Override
-    public void run(ShardManager bot, MessageReceivedEvent ctx, String[] args) {
+    public void run(ShardManager bot, MessageReceivedEvent ctx, ArrayList<String> args) {
 
     }
 }
