@@ -14,21 +14,26 @@ import java.util.Arrays;
 
 public class CommandHandler extends ListenerAdapter {
     public static CommandList commands = new CommandList();
-    public static <T extends CommandBase> void clearCooldown(String userID, @NotNull T command){
-        command.commandCooldown.remove(userID);
+
+    public static void clearCooldown(String userID, String commandUsed){
+        for (CommandBase command : commands.commands) {
+            if (command.commandNames.contains(commandUsed)){
+                command.commandCooldown.remove(userID);
+            }
+        }
     }
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         if(!event.getMessage().getContentRaw().startsWith(discordBot.config.prefix)) return;
         //strip the prefix and convert to array of args
-        ArrayList<String> command = new ArrayList<>(Arrays.asList(event.getMessage().getContentRaw().replaceFirst("^`", "").split(" ") ));
+        ArrayList<String> command = new ArrayList<>(Arrays.asList(event.getMessage().getContentRaw().toLowerCase().replaceFirst("^`", "").split(" ") ));
         for (CommandBase commandToRun:
              commands.commands) {
-            System.out.println("checking if we have the command");
+            
             if(commandToRun.commandNames.contains(command.get(0))){
-                System.out.println("we are checking if they can run it");
+                
                 if(canRunCommand(event.getAuthor(), commandToRun)){
-                    System.out.println("we are about to run the command");
+                    
                     //FIXME: there has to be a better way to pass the array
                     commandToRun.commandCooldown.put(event.getAuthor().getId(), Instant.now().getEpochSecond());
                     commandToRun.run(discordBot.getShartManager(), event, command);

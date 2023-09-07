@@ -17,5 +17,4 @@ public abstract class CommandBase {
 
     public abstract void run(ShardManager bot, MessageReceivedEvent ctx, ArrayList<String> args);
 
-
 }

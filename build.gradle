@@ -21,7 +21,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation "com.discord4j:discord4j-core:3.2.4"
     implementation 'net.dv8tion:JDA:5.0.0-beta.9'
-    implementation "club.minnced:discord-webhooks:0.8.2"
+    implementation 'club.minnced:discord-webhooks:0.8.4'
     implementation 'org.reflections:reflections:0.10.2'
 }
 

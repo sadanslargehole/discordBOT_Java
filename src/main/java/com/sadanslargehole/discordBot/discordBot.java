@@ -16,7 +16,7 @@ import java.util.Objects;
 public class discordBot {
 
     public static config config;
-    public HashMap<String, Object> commandMap = new HashMap();
+    public HashMap<String, Object> commandMap = new HashMap<>();
 
     private static ShardManager shartManager;
     public static ShardManager getShartManager(){
